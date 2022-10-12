@@ -10,6 +10,15 @@ export interface RepositoryItemProps {
   ownerAvatarUrl: string
 }
 
+export interface edgeRepository {
+  node: () => RepositoryItemProps
+}
+
+export interface responseAPI {
+  totalCount: number
+  edges: edgeRepository[]
+}
+
 export interface RepositoryItemHeaderProps {
   fullName: string
   description: string

@@ -23,7 +23,9 @@ module.exports = function(api) {
             components: "./components",
             data: "./data",
             interfaces: "./interfaces",
-            lib: "./lib"
+            lib: "./lib",
+            pages: "./pages",
+            schemas: "./schemas"
           },
           extensions: [".ts", ".tsx"]
         }

@@ -1,7 +1,8 @@
 export const theme = {
   appBar: {
     primary: '#24292e',
-    textPrimary: '#fff'
+    textPrimary: '#fff',
+    textSecondary: '#888'
   },
   colors: {
     textPrimary: '#24292e',
@@ -11,7 +12,8 @@ export const theme = {
   },
   fontSizes: {
     body: 14,
-    subheading: 16
+    subheading: 16,
+    big: 18
   },
   fonts: {
     main: 'System'
@@ -19,5 +21,8 @@ export const theme = {
   fontWeights: {
     normal: 'normal' as "normal",
     bold: 'bold' as "bold"
+  },
+  button: {
+    textPrimary: 'blue'
   }
 }

@@ -12,7 +12,7 @@ interface StyledTextProps {
   color?: colors
   fontSize?: fontSizes
   fontWeight?: fontWeigths
-  style?: TextStyle
+  style?: TextStyle | {}[]
 }
 
 export default function StyledText({
