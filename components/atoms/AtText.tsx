@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { StyleSheet, Text, TextStyle } from 'react-native'
 
-import { theme } from 'lib/utils/theme'
+import { theme } from 'utils'
 
 type colors = 'primary' | 'secondary'
 type fontSizes = 'body' | 'subheading'
@@ -15,7 +15,7 @@ interface StyledTextProps {
   style?: TextStyle | {}[]
 }
 
-export default function StyledText({
+export function AtText({
   children,
   color,
   fontSize,

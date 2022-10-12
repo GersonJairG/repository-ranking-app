@@ -1,23 +1,24 @@
 import { ReactNode } from 'react'
+import { StyleSheet } from 'react-native'
 import { Link, useLocation } from 'react-router-native'
-import StyledText from 'lib/StyledText'
-import { StyleSheet, Text } from 'react-native'
-import { theme } from 'lib/utils/theme'
+
+import { AtText } from 'components/atoms'
+import { theme } from 'utils'
 
 interface AppBarTabProps {
   to: string
   children: ReactNode
 }
 
-export default function AppBarTab({ to, children }: AppBarTabProps) {
+export function MlTab({ to, children }: AppBarTabProps) {
   const { pathname } = useLocation()
   const active = pathname === to
   const textStyles = [styles.text, active && styles.active]
   return (
     <Link to={to} style={styles.container}>
-      <StyledText fontWeight="bold" style={textStyles}>
+      <AtText fontWeight="bold" style={textStyles}>
         {children}
-      </StyledText>
+      </AtText>
     </Link>
   )
 }

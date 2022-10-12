@@ -1,42 +1,42 @@
 import { StyleSheet, View } from 'react-native'
 
+import { AtText } from 'components/atoms'
 import { RepositoryItemStatsProps } from 'interfaces/Repository'
-import StyledText from 'lib/StyledText'
 
 function parseThousands(value: number) {
   return value >= 1000 ? `${Math.round(value / 100) / 10}k` : `${value}`
 }
 
-export default function RepositoryStats(props: RepositoryItemStatsProps) {
+export function MlStatsCard(props: RepositoryItemStatsProps) {
   return (
     <View style={styles.container}>
       <View style={{ alignItems: 'center' }}>
-        <StyledText fontWeight="bold">
+        <AtText fontWeight="bold">
           {parseThousands(props.stargazersCount)}
-        </StyledText>
-        <StyledText>Stars</StyledText>
+        </AtText>
+        <AtText>Stars</AtText>
       </View>
       <View style={{ alignItems: 'center' }}>
-        <StyledText fontWeight="bold">
+        <AtText fontWeight="bold">
           {parseThousands(props.forksCount)}
-        </StyledText>
-        <StyledText>Forks</StyledText>
+        </AtText>
+        <AtText>Forks</AtText>
       </View>
       <View style={{ alignItems: 'center' }}>
-        <StyledText fontWeight="bold">{props.reviewCount}</StyledText>
-        <StyledText>Reviews</StyledText>
+        <AtText fontWeight="bold">{props.reviewCount}</AtText>
+        <AtText>Reviews</AtText>
       </View>
       <View style={{ alignItems: 'center' }}>
-        <StyledText fontWeight="bold">{props.ratingAverage}</StyledText>
-        <StyledText>Rating</StyledText>
+        <AtText fontWeight="bold">{props.ratingAverage}</AtText>
+        <AtText>Rating</AtText>
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { 
+  container: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 })

@@ -22,10 +22,13 @@ module.exports = function(api) {
             assets: "./assets",
             components: "./components",
             data: "./data",
+            gql: "./gql",
+            hooks: "./hooks",
             interfaces: "./interfaces",
-            lib: "./lib",
             pages: "./pages",
-            schemas: "./schemas"
+            schemas: "./schemas",
+            types: "./types",
+            utils: "./utils"
           },
           extensions: [".ts", ".tsx"]
         }

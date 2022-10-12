@@ -1,15 +1,15 @@
 import { ScrollView, View, StyleSheet } from 'react-native'
-
 import Constants from 'expo-constants'
-import { theme } from 'lib/utils/theme'
-import AppBarTab from './AppBarTab'
 
-export default function AppBar() {
+import { MlTab } from 'components/molecules'
+import { theme } from 'utils'
+
+export function OrAppBar() {
   return (
     <View>
       <ScrollView horizontal style={styles.container}>
-        <AppBarTab to="/">Repositories</AppBarTab>
-        <AppBarTab to="/signin">Other</AppBarTab>
+        <MlTab to="/">Repositories</MlTab>
+        <MlTab to="/signin">Other</MlTab>
       </ScrollView>
     </View>
   )

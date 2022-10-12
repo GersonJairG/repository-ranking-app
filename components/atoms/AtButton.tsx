@@ -6,7 +6,8 @@ import {
   TextStyle,
   StyleProp,
 } from 'react-native'
-import { theme } from './utils/theme'
+
+import { theme } from 'utils'
 
 interface StyledButtonProps {
   title: string
@@ -14,7 +15,7 @@ interface StyledButtonProps {
   style: StyleProp<TextStyle>
 }
 
-export default function StyledButton({
+export function AtButton({
   title,
   disabled = false,
   style,

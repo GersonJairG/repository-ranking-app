@@ -11,7 +11,7 @@ interface StyledInputProps {
   error?: boolean
 }
 
-export default function StyledInput({
+export function AtInput({
   style,
   error = false,
   ...props

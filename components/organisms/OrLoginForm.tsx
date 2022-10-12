@@ -1,9 +1,7 @@
-import { View, Button, StyleSheet, TextInputProps } from 'react-native'
+import { View, StyleSheet, TextInputProps } from 'react-native'
 import { Formik, useField } from 'formik'
 
-import StyledInput from 'lib/StyledInput'
-import StyledText from 'lib/StyledText'
-import StyledButton from 'lib/StyledButton'
+import { AtButton, AtInput, AtText } from 'components/atoms'
 import { LoginValidationSchema } from 'schemas/LoginValidationSchema'
 
 type namesInput = 'email' | 'password'
@@ -29,20 +27,18 @@ function FormikInputValue({
   const [field, meta, helpers] = useField(name)
   return (
     <>
-      <StyledInput
+      <AtInput
         value={field.value}
         onChangeText={helpers.setValue}
         error={!!meta.error}
         {...props}
       />
-      {meta.error && (
-        <StyledText style={styles.textError}>{meta.error}</StyledText>
-      )}
+      {meta.error && <AtText style={styles.textError}>{meta.error}</AtText>}
     </>
   )
 }
 
-export default function LoginForm() {
+export function OrLoginForm() {
   function submit(values: FormikProps) {
     console.log(values)
   }
@@ -65,7 +61,7 @@ export default function LoginForm() {
             style={styles.input}
             secureTextEntry
           />
-          <StyledButton
+          <AtButton
             title="Iniciar sesión"
             disabled={!isValid}
             onPress={() => handleSubmit()}

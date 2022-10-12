@@ -1,6 +1,9 @@
-import { RepositoryItemProps, responseAPI } from 'interfaces/Repository'
 import { useEffect, useState } from 'react'
+import { useQuery } from '@apollo/client'
+
 import { URI_API } from '@env'
+import { GET_REPOSITORIES } from 'gql/queries'
+import { RepositoryItemProps, responseAPI } from 'interfaces/Repository'
 
 export default function useRepositories() {
   const [repositories, setRepositories] = useState<
@@ -17,7 +20,7 @@ export default function useRepositories() {
   async function fetchRepositories() {
     try {
       setIsLoading(true)
-      const response = await fetch(`${URI_API}/repositories`)
+      const response = await fetch(`${URI_API}/api/repositories`)
       const responseJson = await response.json()
       const repos = responseJson && convertRepositories(responseJson)
       setRepositories(repos)

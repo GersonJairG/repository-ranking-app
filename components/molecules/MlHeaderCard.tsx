@@ -1,21 +1,21 @@
 import { View, Image, StyleSheet } from 'react-native'
 
-import StyledText from 'lib/StyledText'
+import { AtText } from 'components/atoms'
 import { RepositoryItemHeaderProps } from 'interfaces/Repository'
-import { theme } from 'lib/utils/theme'
+import { theme } from 'utils'
 
-export default function RepositoryItemHeader(props: RepositoryItemHeaderProps) {
+export function MlHeaderCard(props: RepositoryItemHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.avatarWrapper}>
         <Image style={styles.avatar} source={{ uri: props.ownerAvatarUrl }} />
       </View>
       <View style={styles.details}>
-        <StyledText fontSize="subheading" fontWeight="bold">
+        <AtText fontSize="subheading" fontWeight="bold">
           {props.fullName}
-        </StyledText>
-        <StyledText color='secondary' >{props.description}</StyledText>
-        <StyledText style={styles.language}>{props.language}</StyledText>
+        </AtText>
+        <AtText color="secondary">{props.description}</AtText>
+        <AtText style={styles.language}>{props.language}</AtText>
       </View>
     </View>
   )
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatarWrapper: {
-    marginRight: 5
+    marginRight: 5,
   },
   avatar: {
     width: 50,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   details: {
-    flex: 1
+    flex: 1,
   },
   language: {
     color: theme.colors.white,
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     padding: 4,
     borderRadius: 5,
     overflow: 'hidden',
-    marginVertical: 3
+    marginVertical: 3,
   },
 })

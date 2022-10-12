@@ -1,11 +1,17 @@
-import { FlatList, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native'
 
-import RepositoryItem from 'components/RepositoryItem'
+import { OrCard } from 'components/organisms'
+import { AtText } from 'components/atoms'
 import useRepositories from 'hooks/useRepositories'
 import { RepositoryItemProps } from 'interfaces/Repository'
-import StyledText from 'lib/StyledText'
 
-export default function RepositoryList() {
+export function RepositoriesPage() {
   const { repositories, isLoading, error } = useRepositories()
 
   if (isLoading) {
@@ -23,22 +29,22 @@ export default function RepositoryList() {
           data={repositories}
           ItemSeparatorComponent={() => <Text> </Text>}
           renderItem={({ item }: { item: RepositoryItemProps }) => (
-            <RepositoryItem {...item} />
+            <OrCard {...item} />
           )}
         />
       ) : error ? (
         <>
-          <StyledText fontSize="subheading" style={styles.noData}>
+          <AtText fontSize="subheading" style={styles.noData}>
             ¡Tuvimos un error!🤕
-          </StyledText>
-          <StyledText fontSize="body" style={styles.noData}>
+          </AtText>
+          <AtText fontSize="body" style={styles.noData}>
             {error}
-          </StyledText>
+          </AtText>
         </>
       ) : (
-        <StyledText fontSize="subheading" style={styles.noData}>
+        <AtText fontSize="subheading" style={styles.noData}>
           ¡Lo sentimos! no encontramos datos ☹️
-        </StyledText>
+        </AtText>
       )}
     </View>
   )
