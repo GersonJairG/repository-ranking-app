@@ -15,8 +15,10 @@ export interface edgeRepository {
 }
 
 export interface responseAPI {
-  totalCount: number
-  edges: edgeRepository[]
+  repositories: {
+    totalCount: number
+    edges: edgeRepository[]
+  }
 }
 
 export interface RepositoryItemHeaderProps {

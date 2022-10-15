@@ -25,9 +25,9 @@ export function MlTab({ to, children }: AppBarTabProps) {
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: 15,
-    borderRadius: 5,
-    paddingHorizontal: 2,
+    marginRight: 10,
+    borderRadius: theme.measures.radius,
+    paddingHorizontal: 5,
   },
   text: {
     color: theme.appBar.textSecondary,

@@ -1,10 +1,11 @@
 import { ReactNode } from 'react'
-import { StyleSheet, Text, TextStyle } from 'react-native'
+import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native'
 
 import { theme } from 'utils'
 
-type colors = 'primary' | 'secondary'
-type fontSizes = 'body' | 'subheading'
+type colors = 'primary' | 'secondary' | 'error'
+type fontSizes = 'small' | 'body' | 'subheading' | 'big'
+type fontColors = 'error'
 type fontWeigths = 'normal' | 'bold'
 
 interface StyledTextProps {
@@ -12,7 +13,7 @@ interface StyledTextProps {
   color?: colors
   fontSize?: fontSizes
   fontWeight?: fontWeigths
-  style?: TextStyle | {}[]
+  style?: StyleProp<TextStyle>
 }
 
 export function AtText({
@@ -27,7 +28,11 @@ export function AtText({
     styles.text,
     color === 'primary' && styles.colorPrimary,
     color === 'secondary' && styles.colorSecondary,
+    color === 'error' && styles.colorError,
+    fontSize === 'small' && styles.small,
+    fontSize === 'body' && styles.body,
     fontSize === 'subheading' && styles.subheading,
+    fontSize === 'big' && styles.big,
     fontWeight === 'bold' && styles.bold,
     style
   ]
@@ -39,11 +44,15 @@ const styles = StyleSheet.create({
   bold: { fontWeight: theme.fontWeights.bold },
   colorPrimary: { color: theme.colors.primary },
   colorSecondary: { color: theme.colors.textSecondary },
+  colorError: { color: theme.colors.error },
+  small: { fontSize: theme.fontSizes.small  },
+  body: { fontSize: theme.fontSizes.body  },
   subheading: { fontSize: theme.fontSizes.subheading  },
+  big: { fontSize: theme.fontSizes.big  },
   text: {
     color: theme.colors.textPrimary,
     fontSize: theme.fontSizes.body,
     fontFamily: theme.fonts.main,
-    fontWeight: theme.fontWeights.normal,
+    fontWeight: theme.fontWeights.normal
   },
 })

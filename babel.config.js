@@ -21,6 +21,7 @@ module.exports = function(api) {
           alias: {
             assets: "./assets",
             components: "./components",
+            contexts: "./contexts",
             data: "./data",
             gql: "./gql",
             hooks: "./hooks",

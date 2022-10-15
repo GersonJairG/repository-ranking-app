@@ -1,8 +1,24 @@
-import { URI_API } from '@env'
-import ApolloClient from 'apollo-boost'
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 
-export function createApolloClient() {
-  return new ApolloClient({
-    uri: `${URI_API}/graphql`,
-  })
-}
+import Constants from 'expo-constants'
+import { AuthStorage } from 'utils/authStorage'
+
+const APOLLO_URI = Constants.manifest?.extra?.apolloUri
+
+const httpLink = createHttpLink({ uri: `${APOLLO_URI}/graphql` })
+
+const authLink = setContext(async (_, { headers }) => {
+  const token = await AuthStorage.getAccessToken()
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  }
+})
+
+export const apolloClient = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+})

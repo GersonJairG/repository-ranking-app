@@ -6,8 +6,8 @@ import { OrLoginForm } from 'components/organisms'
 export function LoginPage() {
   return (
     <View style={styles.container}>
-      <AtText fontSize="subheading" fontWeight="bold" style={styles.welcome}>
-        ¡Bienvenido!
+      <AtText fontSize="big" fontWeight="bold" style={styles.welcome}>
+        ¡Welcome!
       </AtText>
       <OrLoginForm />
     </View>

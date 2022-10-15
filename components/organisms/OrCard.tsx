@@ -1,17 +1,22 @@
 import { View, StyleSheet } from 'react-native'
 
-import { MlHeaderCard, MlStatsCard } from 'components/molecules'
+import { MlContentCard, MlStatsCard } from 'components/molecules'
 import { RepositoryItemProps } from 'interfaces/Repository'
+import { theme } from 'utils'
 
 export function OrCard(props: RepositoryItemProps) {
   return (
     <View key={props.id} style={styles.container}>
-      <MlHeaderCard {...props} />
+      <MlContentCard {...props} />
       <MlStatsCard {...props} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, paddingVertical: 5 },
+  container: {
+    padding: 20,
+    paddingVertical: 5,
+    backgroundColor: theme.colors.white,
+  },
 })

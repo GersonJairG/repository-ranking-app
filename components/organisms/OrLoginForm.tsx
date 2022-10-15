@@ -1,22 +1,20 @@
-import { View, StyleSheet, TextInputProps } from 'react-native'
+import { View, StyleSheet, TextInputProps, Alert } from 'react-native'
+import { useNavigate } from 'react-router-native'
 import { Formik, useField } from 'formik'
 
 import { AtButton, AtInput, AtText } from 'components/atoms'
+import { AuthenticateInput } from 'interfaces/graphql'
 import { LoginValidationSchema } from 'schemas/LoginValidationSchema'
+import { useAuth } from 'contexts/AuthContext'
 
-type namesInput = 'email' | 'password'
-
-interface FormikProps {
-  email: string
-  password: string
-}
+type namesInput = 'username' | 'password'
 
 interface FormikInputProps {
   name: namesInput
 }
 
 const initialValues = {
-  email: '',
+  username: '',
   password: '',
 }
 
@@ -25,23 +23,36 @@ function FormikInputValue({
   ...props
 }: FormikInputProps & TextInputProps) {
   const [field, meta, helpers] = useField(name)
+  const showError = meta.touched && meta.error
   return (
     <>
       <AtInput
         value={field.value}
         onChangeText={helpers.setValue}
-        error={!!meta.error}
+        onBlur={() => helpers.setTouched(true)}
+        error={!!showError}
+        autoCapitalize="none"
         {...props}
       />
-      {meta.error && <AtText style={styles.textError}>{meta.error}</AtText>}
+      {!!showError && (
+        <AtText color="error" fontSize="small">
+          {meta.error}
+        </AtText>
+      )}
     </>
   )
 }
 
 export function OrLoginForm() {
-  function submit(values: FormikProps) {
-    console.log(values)
+  const navigate = useNavigate()
+  const { signIn } = useAuth()
+
+  async function submit(values: AuthenticateInput) {
+    const { error } = await signIn(values)
+    error && Alert.alert(error.split('Error:')[1])
+    !error && navigate('/')
   }
+
   return (
     <Formik
       validationSchema={LoginValidationSchema}
@@ -51,18 +62,19 @@ export function OrLoginForm() {
       {({ handleSubmit, isValid }) => (
         <View style={styles.form}>
           <FormikInputValue
-            name="email"
-            placeholder="Email"
+            name="username"
+            placeholder="Username"
             style={styles.input}
           />
           <FormikInputValue
             name="password"
             placeholder="Password"
+            keyboardType="visible-password"
             style={styles.input}
             secureTextEntry
           />
           <AtButton
-            title="Iniciar sesión"
+            title="Sign in"
             disabled={!isValid}
             onPress={() => handleSubmit()}
             style={styles.loginButton}
@@ -75,15 +87,12 @@ export function OrLoginForm() {
 
 const styles = StyleSheet.create({
   form: {
-    margin: 20,
+    marginHorizontal: 20,
+    marginVertical: 15,
   },
   input: {
     marginTop: 10,
     marginBottom: 2,
-  },
-  textError: {
-    color: 'red',
-    fontSize: 13,
   },
   loginButton: {
     marginVertical: 10,

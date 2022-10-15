@@ -5,6 +5,7 @@ import {
   TextInputProps,
   TextStyle,
 } from 'react-native'
+import { theme } from 'utils'
 
 interface StyledInputProps {
   style?: StyleProp<TextStyle>
@@ -27,11 +28,11 @@ export function AtInput({
 const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: theme.measures.radius,
     borderColor: '#999',
     padding: 10,
   },
   error: {
-    borderColor: 'red',
+    borderColor: theme.colors.error,
   },
 })
