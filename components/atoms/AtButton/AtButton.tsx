@@ -6,7 +6,7 @@ import {
   StyleProp,
 } from 'react-native'
 
-import { AtText } from './AtText'
+import { AtText } from '../AtText/AtText'
 import { theme } from 'utils'
 
 interface StyledButtonProps {
