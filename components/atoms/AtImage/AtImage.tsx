@@ -23,6 +23,7 @@ export function AtImage({ uri, type = 'square', size = 50 }: AtImageProps) {
       <Image
         style={avatarStyles}
         source={uri ? { uri } : require('assets/default-profile.png')}
+        testID="at-image"
       />
     </View>
   )

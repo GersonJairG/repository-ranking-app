@@ -26,7 +26,12 @@ export function AtButton({
   const buttonStyles = [styles.container, disabled && styles.disabled, style]
   const textStyles = [styles.text, styleText]
   return (
-    <TouchableOpacity style={buttonStyles} disabled={disabled} {...props}>
+    <TouchableOpacity
+      style={buttonStyles}
+      disabled={disabled}
+      {...props}
+      testID="at-button"
+    >
       <AtText fontWeight="bold" fontSize="subheading" style={textStyles}>
         {title}
       </AtText>

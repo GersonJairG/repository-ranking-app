@@ -5,7 +5,6 @@ import { theme } from 'utils'
 
 type colors = 'primary' | 'secondary' | 'error'
 type fontSizes = 'small' | 'body' | 'subheading' | 'big'
-type fontColors = 'error'
 type fontWeigths = 'normal' | 'bold'
 
 interface StyledTextProps {
@@ -22,7 +21,7 @@ export function AtText({
   fontSize,
   fontWeight,
   style,
-  ...rest
+  ...props
 }: StyledTextProps) {
   const textStyles = [
     styles.text,
@@ -34,10 +33,14 @@ export function AtText({
     fontSize === 'subheading' && styles.subheading,
     fontSize === 'big' && styles.big,
     fontWeight === 'bold' && styles.bold,
-    style
+    style,
   ]
 
-  return <Text style={textStyles} {...rest}>{children}</Text>
+  return (
+    <Text style={textStyles} {...props} testID="at-text">
+      {children}
+    </Text>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -45,14 +48,14 @@ const styles = StyleSheet.create({
   colorPrimary: { color: theme.colors.primary },
   colorSecondary: { color: theme.colors.textSecondary },
   colorError: { color: theme.colors.error },
-  small: { fontSize: theme.fontSizes.small  },
-  body: { fontSize: theme.fontSizes.body  },
-  subheading: { fontSize: theme.fontSizes.subheading  },
-  big: { fontSize: theme.fontSizes.big  },
+  small: { fontSize: theme.fontSizes.small },
+  body: { fontSize: theme.fontSizes.body },
+  subheading: { fontSize: theme.fontSizes.subheading },
+  big: { fontSize: theme.fontSizes.big },
   text: {
     color: theme.colors.textPrimary,
     fontSize: theme.fontSizes.body,
     fontFamily: theme.fonts.main,
-    fontWeight: theme.fontWeights.normal
+    fontWeight: theme.fontWeights.normal,
   },
 })

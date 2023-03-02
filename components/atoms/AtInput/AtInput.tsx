@@ -17,12 +17,8 @@ export function AtInput({
   error = false,
   ...props
 }: StyledInputProps & TextInputProps) {
-  const inputStyle = [
-    styles.input,
-    style,
-    error && styles.error
-  ]
-  return <TextInput style={inputStyle} {...props} />
+  const inputStyle = [styles.input, style, error && styles.error]
+  return <TextInput style={inputStyle} {...props} testID="at-input" />
 }
 
 const styles = StyleSheet.create({

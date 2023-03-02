@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import { AtText, AtImage } from 'components/atoms'
 import { RepositoryItemHeaderProps } from 'interfaces/Repository'
@@ -6,7 +6,7 @@ import { theme } from 'utils'
 
 export function MlContentCard(props: RepositoryItemHeaderProps) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="ml-content-card">
       <AtImage uri={props.ownerAvatarUrl} type="square" />
       <View style={styles.details}>
         <AtText fontSize="subheading" fontWeight="bold">
